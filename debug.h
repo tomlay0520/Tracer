@@ -33,6 +33,7 @@
 
 
 
+
 // Function entry/exit and statement tracing functions
 void debugger_enter_function(const char* func, const char* file, int line);
 void debugger_exit_function(const char* func, const char* file, int line);
@@ -48,6 +49,8 @@ void debugger_trace_variable_char(const char* func, const char* file, int line, 
 void debugger_trace_variable_string(const char* func, const char* file, int line, const char* var_name, const char* var_value);
 void debugger_trace_variable_pointer(const char* func, const char* file, int line, const char* var_name, const void* var_value);
 void debugger_trace_variable_generic(const char* func, const char* file, int line, const char* var_name, const void* var_value, size_t size);
+
+
 
 typedef union {
     int int_val;
@@ -82,11 +85,12 @@ typedef struct VAR_CONTEXT_NODE {
 
 typedef struct FUNCTION_CONTEXT {
     uint32_t id;
-    uint64_t start_time_stamp;
-    uint64_t end_time_stamp;
+    long long start_time_stamp;
+    long long end_time_stamp;
     const char* func;
     const char* file;
-    int line;
+    int start_line;
+    int end_line;
     struct FUNCTION_CONTEXT* parent;
     struct FUNCTION_CONTEXT* child;
     struct VAR_CONTEXT_NODE* var_list_ptr;

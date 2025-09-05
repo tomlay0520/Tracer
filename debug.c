@@ -1,16 +1,29 @@
 #include "debug.h"
 #include <stdio.h>
+#include <time.h>
+#include <inttypes.h>
+#include <stdlib.h>
 
 
 // Implementations of debugging functions
 
+
 void debugger_enter_function(const char* func, const char* file, int line) {
     printf("[ENTER] Function: %s | File: %s | Line: %d\n", func, file, line);
-    
+    FUNCTION_CONTEXT* fc = malloc(sizeof(FUNCTION_CONTEXT));
+    fc->func = func;
+    fc->file = file;
+
+
+    struct timespec ts;
+    clock_gettime(CLOCK_MONOTONIC, &ts);
+    fc->start_time_stamp = (long long)ts.tv_sec * 1000000 + ts.tv_nsec / 1000;
+    printf("Start Timestamp (μs): %llu\n", fc->start_time_stamp);
 }
 
 void debugger_exit_function(const char* func, const char* file, int line) {
     printf("[EXIT] Function: %s | File: %s | Line: %d\n", func, file, line);
+
 }
 
 void debugger_trace_statement(const char* func, const char* file, int line) {
@@ -48,6 +61,8 @@ void debugger_trace_variable_pointer(const char* func, const char* file, int lin
 void debugger_trace_variable_generic(const char* func, const char* file, int line, const char* var_name, const void* var_value, size_t size) {
     printf("[VAR] %s | File: %s | Line: %d | %s = (generic pointer: %p, size: %zu bytes)\n", func, file, line, var_name, var_value, size);
 }
+
+
 
 
 void foo(int);

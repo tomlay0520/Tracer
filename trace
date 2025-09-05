@@ -1,0 +1,13 @@
+[ENTER] Function: main | File: debug.c | Line: 66
+[TRACE] Function: main | File: debug.c | Line: 66
+[ENTER] Function: foo | File: debug.c | Line: 56
+[VAR] foo | File: debug.c | Line: 57 | x = 1
+[TRACE] Function: foo | File: debug.c | Line: 58
+[VAR] foo | File: debug.c | Line: 60 | x = 9
+[TRACE] Function: foo | File: debug.c | Line: 60
+[EXIT] Function: foo | File: debug.c | Line: 61
+[VAR] main | File: debug.c | Line: 74 | a = 42
+[VAR] main | File: debug.c | Line: 75 | b = 3.140000
+[VAR] main | File: debug.c | Line: 76 | str = "Hello, Debugger!"
+[VAR] main | File: debug.c | Line: 77 | ptr = 0xdeadbeef
+[EXIT] Function: main | File: debug.c | Line: 81
