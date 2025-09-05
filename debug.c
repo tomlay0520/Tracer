@@ -9,6 +9,16 @@ struct FUNCTION_CONTEXT* func_stack;
 uint32_t func_id_counter = 1;
 
 
+
+//                   +-------------------------------+
+// top of stack ---> |FUNCTION_CONTEXT               |
+//                   +-------------------------------+
+//                   |FUNCTION_CONTEXT_PARENT        |
+//                   +-------------------------------+
+//                   |FUNCTION_CONTEXT_PARENT_PARENT |
+//                   +-------------------------------+
+
+
 // Implementations of debugging functions
 void debugger_enter_function(const char* func, const char* file, int line) {
     printf("[ENTER] Function: %s | File: %s | Line: %d\n", func, file, line);
@@ -28,16 +38,17 @@ void debugger_enter_function(const char* func, const char* file, int line) {
     fc->var_list_ptr = NULL;
     fc->next = NULL;
 
+    // time stamp to get the start time
     struct timespec ts;
     clock_gettime(CLOCK_MONOTONIC, &ts);
     fc->start_time_stamp = (long long)ts.tv_sec * 1000000 + ts.tv_nsec / 1000;
-    printf("Start Timestamp (μs): %llu\n", fc->start_time_stamp);
-
+    // printf("Start Timestamp (μs): %llu\n", fc->start_time_stamp);
+    
     if (func_stack != NULL) {
         func_stack->child = fc;
     }
     fc->next = func_stack;
-    func_stack = fc;
+    func_stack = fc; // push onto stack
 }
 
 void debugger_exit_function(const char* func, const char* file, int line) {
@@ -53,15 +64,14 @@ void debugger_exit_function(const char* func, const char* file, int line) {
     func_stack->end_time_stamp = (long long)ts.tv_sec * 1000000 + ts.tv_nsec / 1000;
     func_stack->end_line = line;
 
-    printf("End Timestamp (μs): %llu | Function ID: %u\n", 
-           func_stack->end_time_stamp, func_stack->id);
+    int delta = (int)(func_stack->end_time_stamp - func_stack->start_time_stamp);
+    printf("[Duration]: Function: %s | %d (μs) \n", func, delta);
+    // printf("End Timestamp (μs): %llu | Function ID: %u\n", 
+    //        func_stack->end_time_stamp, func_stack->id);
 
-    // 弹出栈顶并释放内存（若需保留上下文可注释free）
     FUNCTION_CONTEXT* temp = func_stack;
-    func_stack = func_stack->next;  // 栈顶指向父函数
+    func_stack = func_stack->next;  // pop from stack
     free(temp);
-
-   
 
 }
 
@@ -97,41 +107,10 @@ void debugger_trace_variable_pointer(const char* func, const char* file, int lin
     printf("[VAR] %s | File: %s | Line: %d | %s = %p\n", func, file, line, var_name, var_value);
 }
 
-void debugger_trace_variable_generic(const char* func, const char* file, int line, const char* var_name, const void* var_value, size_t size) {
-    printf("[VAR] %s | File: %s | Line: %d | %s = (generic pointer: %p, size: %zu bytes)\n", func, file, line, var_name, var_value, size);
-}
+// void debugger_trace_variable_generic(const char* func, const char* file, int line, const char* var_name, const void* var_value, size_t size) {
+//     printf("[VAR] %s | File: %s | Line: %d | %s = (generic pointer: %p, size: %zu bytes)\n", func, file, line, var_name, var_value, size);
+// }
 
-
-
-
-void foo(int);
-
-void foo(int x) {
-    DEBUGGER_ENTER_FUNCTION();
-    DEBUGGER_VAR(x);
-    x = 10; DEBUGGER_TRACE();
-    x --; // simulate the unexpected change
-    DEBUGGER_VAR(x); DEBUGGER_TRACE();
-    DEBUGGER_EXIT_FUNCTION();
-}
-
-int main() {
-    // Example usage of the debugging macros
-    DEBUGGER_ENTER_FUNCTION(); DEBUGGER_TRACE();
-
-    int a = 42;
-    float b = 3.14f;
-    const char* str = "Hello, Debugger!";
-    void* ptr = (void*)0xDEADBEEF;
-
-    foo(1);
-    DEBUGGER_VAR(a);
-    DEBUGGER_VAR(b);
-    DEBUGGER_VAR(str);
-    DEBUGGER_VAR(ptr);
-
-    // DEBUGGER_TRACE();
-
-    DEBUGGER_EXIT_FUNCTION();
-    return 0;
+void debugger_trace_variable_generic(const char* func, const char* file, int line, const char* var_name, const void* var_value) {
+    printf("[VAR] %s | File: %s | Line: %d | %s = (generic pointer: %p)\n", func, file, line, var_name, var_value);
 }

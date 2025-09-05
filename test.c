@@ -1,23 +1,249 @@
+#include "debug.h"
 #include <stdio.h>
-#define TRACE_IN_FILE() printf("Line %d is in %s\n", __LINE__, __FILE__)
-#define TRACE_IN_FUNCTION() printf("Line %d is in function %s\n", __LINE__, __func__)
+#include <stdlib.h>
+#include <string.h>
+#include <math.h>
 
-
-void 
-original_function() 
-{
-    TRACE_IN_FILE();
-    TRACE_IN_FUNCTION();
-    int x = 1;
-    TRACE_IN_FILE();
-    TRACE_IN_FUNCTION();
-    x += 1;
-    TRACE_IN_FILE();
-    TRACE_IN_FUNCTION();
-    printf("x = %d\n", x);
-}
+// 测试函数声明
+void test_basic_functions();
+void test_nested_calls(int depth);
+void test_recursive_function(int n);
+void test_complex_data_types();
+void test_string_operations();
+void test_array_operations();
 
 int main() {
-    original_function();
+    DEBUGGER_ENTER_FUNCTION();
+    
+    printf("=== 开始调试系统测试 ===\n");
+    
+    // 测试基础功能
+    test_basic_functions();
+    
+    // 测试嵌套调用
+    test_nested_calls(3);
+    
+    // 测试递归函数
+    test_recursive_function(4);
+    
+    // 测试复杂数据类型
+    test_complex_data_types();
+    
+    // 测试字符串操作
+    test_string_operations();
+    
+    // 测试数组操作
+    test_array_operations();
+    
+    printf("=== 测试完成 ===\n");
+    
+    DEBUGGER_EXIT_FUNCTION();
     return 0;
+}
+
+// 基础功能测试 - 只使用基本类型
+void test_basic_functions() {
+    DEBUGGER_ENTER_FUNCTION();
+    
+    int integer_var = 42;
+    unsigned int uint_var = 100;
+    float float_var = 3.14159f;
+    double double_var = 2.71828;
+    char char_var = 'A';
+    char* string_var = "Hello, Debugger!";
+    int* int_pointer = &integer_var;
+    
+    // 测试各种类型的变量跟踪
+    DEBUGGER_VAR(integer_var);
+    DEBUGGER_VAR(uint_var);
+    DEBUGGER_VAR(float_var);
+    DEBUGGER_VAR(double_var);
+    DEBUGGER_VAR(char_var);
+    DEBUGGER_VAR(string_var);
+    DEBUGGER_VAR(int_pointer);
+    
+    // 修改变量值并再次跟踪
+    integer_var *= 2;
+    float_var += 1.0f;
+    char_var = 'B';
+    string_var = "Modified String";
+    
+    DEBUGGER_TRACE();
+    DEBUGGER_VAR(integer_var);
+    DEBUGGER_VAR(float_var);
+    DEBUGGER_VAR(char_var);
+    DEBUGGER_VAR(string_var);
+    
+    DEBUGGER_EXIT_FUNCTION();
+}
+
+// 嵌套调用测试
+void test_nested_calls(int depth) {
+    DEBUGGER_ENTER_FUNCTION();
+    DEBUGGER_VAR(depth);
+    
+    if (depth <= 0) {
+        DEBUGGER_TRACE();
+        DEBUGGER_EXIT_FUNCTION();
+        return;
+    }
+    
+    int local_var = depth * 10;
+    DEBUGGER_VAR(local_var);
+    
+    // 递归嵌套调用
+    test_nested_calls(depth - 1);
+    
+    local_var += 5;
+    DEBUGGER_VAR(local_var);
+    
+    DEBUGGER_EXIT_FUNCTION();
+}
+
+// 递归函数测试
+void test_recursive_function(int n) {
+    DEBUGGER_ENTER_FUNCTION();
+    DEBUGGER_VAR(n);
+    
+    if (n <= 1) {
+        DEBUGGER_TRACE();
+        DEBUGGER_EXIT_FUNCTION();
+        return;
+    }
+    
+    int result = n * 2;
+    DEBUGGER_VAR(result);
+    
+    // 递归调用
+    test_recursive_function(n - 1);
+    
+    result += n;
+    DEBUGGER_VAR(result);
+    
+    DEBUGGER_EXIT_FUNCTION();
+}
+
+// 复杂数据类型测试 - 避免结构体指针
+void test_complex_data_types() {
+    DEBUGGER_ENTER_FUNCTION();
+    
+    // 使用基本类型组合代替结构体
+    int account_id = 1;
+    char account_name[50] = "Alice";
+    float account_balance = 1000.50f;
+    
+    DEBUGGER_VAR(account_id);
+    DEBUGGER_VAR(account_name);
+    DEBUGGER_VAR(account_balance);
+    
+    // 修改账户数据
+    account_balance += 500.0f;
+    strcpy(account_name, "Alice Smith");
+    
+    DEBUGGER_VAR(account_name);
+    DEBUGGER_VAR(account_balance);
+    
+    DEBUGGER_EXIT_FUNCTION();
+}
+
+// 字符串操作测试
+void test_string_operations() {
+    DEBUGGER_ENTER_FUNCTION();
+    
+    char buffer[100] = "Initial String";
+    const char* const_string = "Constant String";
+    char dynamic_string[] = "Dynamic String";
+    
+    DEBUGGER_VAR(buffer);
+    DEBUGGER_VAR(const_string);
+    DEBUGGER_VAR(dynamic_string);
+    
+    // 字符串操作
+    strcat(buffer, " - Appended");
+    int length = strlen(buffer);
+    
+    DEBUGGER_VAR(buffer);
+    DEBUGGER_VAR(length);
+    
+    // 字符串比较
+    int comparison = strcmp(buffer, const_string);
+    DEBUGGER_VAR(comparison);
+    
+    DEBUGGER_EXIT_FUNCTION();
+}
+
+// 数组操作测试
+void test_array_operations() {
+    DEBUGGER_ENTER_FUNCTION();
+    
+    int numbers[5] = {1, 2, 3, 4, 5};
+    float temperatures[] = {20.5f, 22.3f, 19.8f, 21.1f};
+    char vowels[] = {'a', 'e', 'i', 'o', 'u'};
+    
+    // 跟踪数组元素
+    DEBUGGER_VAR(numbers[0]);
+    DEBUGGER_VAR(numbers[2]);
+    DEBUGGER_VAR(numbers[4]);
+    
+    DEBUGGER_VAR(temperatures[1]);
+    DEBUGGER_VAR(vowels[3]);
+    
+    // 修改数组元素
+    numbers[0] = 10;
+    temperatures[1] = 23.7f;
+    vowels[3] = 'x';
+    
+    DEBUGGER_VAR(numbers[0]);
+    DEBUGGER_VAR(temperatures[1]);
+    DEBUGGER_VAR(vowels[3]);
+    
+    // 数组遍历
+    int sum = 0;
+    for (int i = 0; i < 5; i++) {
+        sum += numbers[i];
+        if (i == 2) {
+            DEBUGGER_VAR(sum); // 中间结果跟踪
+        }
+    }
+    
+    DEBUGGER_VAR(sum);
+    
+    DEBUGGER_EXIT_FUNCTION();
+}
+
+// 数学计算测试
+void test_math_calculations() {
+    DEBUGGER_ENTER_FUNCTION();
+    
+    int a = 15;
+    int b = 7;
+    float x = 8.5f;
+    float y = 3.2f;
+    
+    DEBUGGER_VAR(a);
+    DEBUGGER_VAR(b);
+    DEBUGGER_VAR(x);
+    DEBUGGER_VAR(y);
+    
+    // 各种数学运算
+    int sum = a + b;
+    int difference = a - b;
+    int product = a * b;
+    float quotient = x / y;
+    
+    DEBUGGER_VAR(sum);
+    DEBUGGER_VAR(difference);
+    DEBUGGER_VAR(product);
+    DEBUGGER_VAR(quotient);
+    
+    // 模运算
+    int remainder = a % b;
+    DEBUGGER_VAR(remainder);
+    
+    // 浮点运算
+    float power = x * x;
+    
+    DEBUGGER_VAR(power);
+    
+    DEBUGGER_EXIT_FUNCTION();
 }

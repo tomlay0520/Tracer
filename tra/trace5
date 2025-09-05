@@ -1,0 +1,96 @@
+[ENTER] Function: main | File: test.c | Line: 16
+=== 开始调试系统测试 ===
+[ENTER] Function: test_basic_functions | File: test.c | Line: 46
+[VAR] test_basic_functions | File: test.c | Line: 57 | integer_var = 42
+[VAR] test_basic_functions | File: test.c | Line: 58 | uint_var = 100
+[VAR] test_basic_functions | File: test.c | Line: 59 | float_var = 3.141590
+[VAR] test_basic_functions | File: test.c | Line: 60 | double_var = 2.718280
+[VAR] test_basic_functions | File: test.c | Line: 61 | char_var = 'A'
+[VAR] test_basic_functions | File: test.c | Line: 62 | string_var = "Hello, Debugger!"
+[VAR] test_basic_functions | File: test.c | Line: 63 | int_pointer = (generic pointer: 0x7fffb86ac114)
+[TRACE] Function: test_basic_functions | File: test.c | Line: 71
+[VAR] test_basic_functions | File: test.c | Line: 72 | integer_var = 84
+[VAR] test_basic_functions | File: test.c | Line: 73 | float_var = 4.141590
+[VAR] test_basic_functions | File: test.c | Line: 74 | char_var = 'B'
+[VAR] test_basic_functions | File: test.c | Line: 75 | string_var = "Modified String"
+[EXIT] Function: test_basic_functions | File: test.c | Line: 77
+[Duration]: Function: test_basic_functions | 9 (μs) 
+[ENTER] Function: test_nested_calls | File: test.c | Line: 82
+[VAR] test_nested_calls | File: test.c | Line: 83 | depth = 3
+[VAR] test_nested_calls | File: test.c | Line: 92 | local_var = 30
+[ENTER] Function: test_nested_calls | File: test.c | Line: 82
+[VAR] test_nested_calls | File: test.c | Line: 83 | depth = 2
+[VAR] test_nested_calls | File: test.c | Line: 92 | local_var = 20
+[ENTER] Function: test_nested_calls | File: test.c | Line: 82
+[VAR] test_nested_calls | File: test.c | Line: 83 | depth = 1
+[VAR] test_nested_calls | File: test.c | Line: 92 | local_var = 10
+[ENTER] Function: test_nested_calls | File: test.c | Line: 82
+[VAR] test_nested_calls | File: test.c | Line: 83 | depth = 0
+[TRACE] Function: test_nested_calls | File: test.c | Line: 86
+[EXIT] Function: test_nested_calls | File: test.c | Line: 87
+[Duration]: Function: test_nested_calls | 1 (μs) 
+[VAR] test_nested_calls | File: test.c | Line: 98 | local_var = 15
+[EXIT] Function: test_nested_calls | File: test.c | Line: 100
+[Duration]: Function: test_nested_calls | 1 (μs) 
+[VAR] test_nested_calls | File: test.c | Line: 98 | local_var = 25
+[EXIT] Function: test_nested_calls | File: test.c | Line: 100
+[Duration]: Function: test_nested_calls | 2 (μs) 
+[VAR] test_nested_calls | File: test.c | Line: 98 | local_var = 35
+[EXIT] Function: test_nested_calls | File: test.c | Line: 100
+[Duration]: Function: test_nested_calls | 3 (μs) 
+[ENTER] Function: test_recursive_function | File: test.c | Line: 105
+[VAR] test_recursive_function | File: test.c | Line: 106 | n = 4
+[VAR] test_recursive_function | File: test.c | Line: 115 | result = 8
+[ENTER] Function: test_recursive_function | File: test.c | Line: 105
+[VAR] test_recursive_function | File: test.c | Line: 106 | n = 3
+[VAR] test_recursive_function | File: test.c | Line: 115 | result = 6
+[ENTER] Function: test_recursive_function | File: test.c | Line: 105
+[VAR] test_recursive_function | File: test.c | Line: 106 | n = 2
+[VAR] test_recursive_function | File: test.c | Line: 115 | result = 4
+[ENTER] Function: test_recursive_function | File: test.c | Line: 105
+[VAR] test_recursive_function | File: test.c | Line: 106 | n = 1
+[TRACE] Function: test_recursive_function | File: test.c | Line: 109
+[EXIT] Function: test_recursive_function | File: test.c | Line: 110
+[Duration]: Function: test_recursive_function | 0 (μs) 
+[VAR] test_recursive_function | File: test.c | Line: 121 | result = 6
+[EXIT] Function: test_recursive_function | File: test.c | Line: 123
+[Duration]: Function: test_recursive_function | 1 (μs) 
+[VAR] test_recursive_function | File: test.c | Line: 121 | result = 9
+[EXIT] Function: test_recursive_function | File: test.c | Line: 123
+[Duration]: Function: test_recursive_function | 2 (μs) 
+[VAR] test_recursive_function | File: test.c | Line: 121 | result = 12
+[EXIT] Function: test_recursive_function | File: test.c | Line: 123
+[Duration]: Function: test_recursive_function | 2 (μs) 
+[ENTER] Function: test_complex_data_types | File: test.c | Line: 128
+[VAR] test_complex_data_types | File: test.c | Line: 135 | account_id = 1
+[VAR] test_complex_data_types | File: test.c | Line: 136 | account_name = "Alice"
+[VAR] test_complex_data_types | File: test.c | Line: 137 | account_balance = 1000.500000
+[VAR] test_complex_data_types | File: test.c | Line: 143 | account_name = "Alice Smith"
+[VAR] test_complex_data_types | File: test.c | Line: 144 | account_balance = 1500.500000
+[EXIT] Function: test_complex_data_types | File: test.c | Line: 146
+[Duration]: Function: test_complex_data_types | 3 (μs) 
+[ENTER] Function: test_string_operations | File: test.c | Line: 151
+[VAR] test_string_operations | File: test.c | Line: 157 | buffer = "Initial String"
+[VAR] test_string_operations | File: test.c | Line: 158 | const_string = "Constant String"
+[VAR] test_string_operations | File: test.c | Line: 159 | dynamic_string = "Dynamic String"
+[VAR] test_string_operations | File: test.c | Line: 165 | buffer = "Initial String - Appended"
+[VAR] test_string_operations | File: test.c | Line: 166 | length = 25
+[VAR] test_string_operations | File: test.c | Line: 170 | comparison = 6
+[EXIT] Function: test_string_operations | File: test.c | Line: 172
+[Duration]: Function: test_string_operations | 1 (μs) 
+[ENTER] Function: test_array_operations | File: test.c | Line: 177
+[VAR] test_array_operations | File: test.c | Line: 184 | numbers[0] = 1
+[VAR] test_array_operations | File: test.c | Line: 185 | numbers[2] = 3
+[VAR] test_array_operations | File: test.c | Line: 186 | numbers[4] = 5
+[VAR] test_array_operations | File: test.c | Line: 188 | temperatures[1] = 22.299999
+[VAR] test_array_operations | File: test.c | Line: 189 | vowels[3] = 'o'
+[VAR] test_array_operations | File: test.c | Line: 196 | numbers[0] = 10
+[VAR] test_array_operations | File: test.c | Line: 197 | temperatures[1] = 23.700001
+[VAR] test_array_operations | File: test.c | Line: 198 | vowels[3] = 'x'
+[VAR] test_array_operations | File: test.c | Line: 205 | sum = 15
+[VAR] test_array_operations | File: test.c | Line: 209 | sum = 24
+[EXIT] Function: test_array_operations | File: test.c | Line: 211
+[Duration]: Function: test_array_operations | 2 (μs) 
+=== 测试完成 ===
+[EXIT] Function: main | File: test.c | Line: 40
+[Duration]: Function: main | 563 (μs) 

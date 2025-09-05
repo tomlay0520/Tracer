@@ -50,7 +50,8 @@ void debugger_trace_variable_double(const char* func, const char* file, int line
 void debugger_trace_variable_char(const char* func, const char* file, int line, const char* var_name, char var_value);
 void debugger_trace_variable_string(const char* func, const char* file, int line, const char* var_name, const char* var_value);
 void debugger_trace_variable_pointer(const char* func, const char* file, int line, const char* var_name, const void* var_value);
-void debugger_trace_variable_generic(const char* func, const char* file, int line, const char* var_name, const void* var_value, size_t size);
+// void debugger_trace_variable_generic(const char* func, const char* file, int line, const char* var_name, const void* var_value, size_t size);
+void debugger_trace_variable_generic(const char* func, const char* file, int line, const char* var_name, const void* var_value);
 
 
 
