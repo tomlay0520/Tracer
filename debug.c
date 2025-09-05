@@ -5,24 +5,63 @@
 #include <stdlib.h>
 
 
+struct FUNCTION_CONTEXT* func_stack;
+uint32_t func_id_counter = 1;
+
+
 // Implementations of debugging functions
-
-
 void debugger_enter_function(const char* func, const char* file, int line) {
     printf("[ENTER] Function: %s | File: %s | Line: %d\n", func, file, line);
     FUNCTION_CONTEXT* fc = malloc(sizeof(FUNCTION_CONTEXT));
+    if (fc == NULL) {
+        printf("Failed to allocate memory for FUNCTION_CONTEXT");
+        return;
+    }
+
+    fc->id = func_id_counter++;
     fc->func = func;
     fc->file = file;
-
+    fc->start_line = line;
+    fc->end_line = -1; // Unknown at entry yet
+    fc->parent = func_stack;
+    fc->child = NULL;
+    fc->var_list_ptr = NULL;
+    fc->next = NULL;
 
     struct timespec ts;
     clock_gettime(CLOCK_MONOTONIC, &ts);
     fc->start_time_stamp = (long long)ts.tv_sec * 1000000 + ts.tv_nsec / 1000;
     printf("Start Timestamp (μs): %llu\n", fc->start_time_stamp);
+
+    if (func_stack != NULL) {
+        func_stack->child = fc;
+    }
+    fc->next = func_stack;
+    func_stack = fc;
 }
 
 void debugger_exit_function(const char* func, const char* file, int line) {
-    printf("[EXIT] Function: %s | File: %s | Line: %d\n", func, file, line);
+     printf("[EXIT] Function: %s | File: %s | Line: %d\n", func, file, line);
+
+    if (func_stack == NULL) {
+        printf("Warning: Mismatched exit (no active function context)\n");
+        return;
+    }
+
+    struct timespec ts;
+    clock_gettime(CLOCK_MONOTONIC, &ts);
+    func_stack->end_time_stamp = (long long)ts.tv_sec * 1000000 + ts.tv_nsec / 1000;
+    func_stack->end_line = line;
+
+    printf("End Timestamp (μs): %llu | Function ID: %u\n", 
+           func_stack->end_time_stamp, func_stack->id);
+
+    // 弹出栈顶并释放内存（若需保留上下文可注释free）
+    FUNCTION_CONTEXT* temp = func_stack;
+    func_stack = func_stack->next;  // 栈顶指向父函数
+    free(temp);
+
+   
 
 }
 

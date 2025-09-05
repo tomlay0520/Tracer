@@ -33,6 +33,8 @@
 
 
 
+    extern struct FUNCTION_CONTEXT* func_stack;
+    extern uint32_t func_id_counter;
 
 // Function entry/exit and statement tracing functions
 void debugger_enter_function(const char* func, const char* file, int line);
@@ -94,6 +96,7 @@ typedef struct FUNCTION_CONTEXT {
     struct FUNCTION_CONTEXT* parent;
     struct FUNCTION_CONTEXT* child;
     struct VAR_CONTEXT_NODE* var_list_ptr;
+    struct FUNCTION_CONTEXT* next;
 } FUNCTION_CONTEXT;
 
 #endif
