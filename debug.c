@@ -49,23 +49,21 @@ void debugger_trace_variable_generic(const char* func, const char* file, int lin
     printf("[VAR] %s | File: %s | Line: %d | %s = (generic pointer: %p, size: %zu bytes)\n", func, file, line, var_name, var_value, size);
 }
 
+
 void foo(int);
 
 void foo(int x) {
     DEBUGGER_ENTER_FUNCTION();
     DEBUGGER_VAR(x);
-    x = 10;
-    DEBUGGER_TRACE();
+    x = 10; DEBUGGER_TRACE();
     x --; // simulate the unexpected change
-
-
-    DEBUGGER_VAR(x);
+    DEBUGGER_VAR(x); DEBUGGER_TRACE();
     DEBUGGER_EXIT_FUNCTION();
 }
 
 int main() {
     // Example usage of the debugging macros
-    DEBUGGER_ENTER_FUNCTION();
+    DEBUGGER_ENTER_FUNCTION(); DEBUGGER_TRACE();
 
     int a = 42;
     float b = 3.14f;
@@ -78,7 +76,7 @@ int main() {
     DEBUGGER_VAR(str);
     DEBUGGER_VAR(ptr);
 
-    DEBUGGER_TRACE();
+    // DEBUGGER_TRACE();
 
     DEBUGGER_EXIT_FUNCTION();
     return 0;
