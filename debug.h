@@ -31,7 +31,7 @@
         default: debugger_trace_variable_generic \
     )(CURRENT_FUNCTION, __FILE__, __LINE__, #var, var)
 
-
+// should i really set a variable type for STRUCT?
 
     extern struct FUNCTION_CONTEXT* func_stack;
     extern uint32_t func_id_counter;
