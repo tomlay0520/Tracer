@@ -1,0 +1,173 @@
+[ENTER] Function: main | File: test.c | Line: 40
+=== 结构体测试用例 ===
+[ENTER] Function: test_struct_operations | File: test.c | Line: 61
+[ENTER] Function: create_student | File: test.c | Line: 204
+[VAR] create_student | File: test.c | Line: 205 | id = 1
+[VAR] create_student | File: test.c | Line: 206 | name = "Alice"
+[VAR] create_student | File: test.c | Line: 207 | score = 95.500000
+*****************break point here***************
+[VAR] create_student | File: test.c | Line: 218 | s2 = (generic pointer: 0x7ffcb59f6a30)
+[VAR] create_student | File: test.c | Line: 219 | student.id = 1
+[VAR] create_student | File: test.c | Line: 220 | student.name = "Alice"
+[VAR] create_student | File: test.c | Line: 221 | student.score = 95.500000
+[EXIT] Function: create_student | File: test.c | Line: 223
+[Duration]: Function: create_student | 55 (μs) 
+[ENTER] Function: create_student | File: test.c | Line: 204
+[VAR] create_student | File: test.c | Line: 205 | id = 2
+[VAR] create_student | File: test.c | Line: 206 | name = "Bob"
+[VAR] create_student | File: test.c | Line: 207 | score = 88.000000
+*****************break point here***************
+[VAR] create_student | File: test.c | Line: 218 | s2 = (generic pointer: 0x7ffcb59f6a30)
+[VAR] create_student | File: test.c | Line: 219 | student.id = 2
+[VAR] create_student | File: test.c | Line: 220 | student.name = "Bob"
+[VAR] create_student | File: test.c | Line: 221 | student.score = 88.000000
+[EXIT] Function: create_student | File: test.c | Line: 223
+[Duration]: Function: create_student | 2 (μs) 
+[VAR] test_struct_operations | File: test.c | Line: 68 | student1.id = 1
+[VAR] test_struct_operations | File: test.c | Line: 69 | student1.name = "Alice"
+[VAR] test_struct_operations | File: test.c | Line: 70 | student1.score = 95.500000
+[VAR] test_struct_operations | File: test.c | Line: 71 | student1.is_active = 0
+[VAR] test_struct_operations | File: test.c | Line: 73 | student2.id = 2
+[VAR] test_struct_operations | File: test.c | Line: 74 | student2.name = "Bob"
+[VAR] test_struct_operations | File: test.c | Line: 75 | student2.score = 88.000000
+[VAR] test_struct_operations | File: test.c | Line: 82 | student1.score = 98.000000
+[VAR] test_struct_operations | File: test.c | Line: 83 | student2.score = 90.000000
+[VAR] test_struct_operations | File: test.c | Line: 84 | student1.is_active = 1
+[VAR] test_struct_operations | File: test.c | Line: 88 | student_ptr->id = 1
+[VAR] test_struct_operations | File: test.c | Line: 89 | student_ptr->name = "Alice"
+[ENTER] Function: modify_student | File: test.c | Line: 250
+[VAR] modify_student | File: test.c | Line: 253 | student->id = 1
+[VAR] modify_student | File: test.c | Line: 254 | student->name = "Alice"
+[VAR] modify_student | File: test.c | Line: 255 | student->score = 98.000000
+[VAR] modify_student | File: test.c | Line: 261 | student->score = 103.000000
+[VAR] modify_student | File: test.c | Line: 262 | student->is_active = 1
+[EXIT] Function: modify_student | File: test.c | Line: 265
+[Duration]: Function: modify_student | 1 (μs) 
+[VAR] test_struct_operations | File: test.c | Line: 93 | student1.score = 103.000000
+[VAR] test_struct_operations | File: test.c | Line: 98 | student3.id = 3
+[VAR] test_struct_operations | File: test.c | Line: 99 | student3.name = "Alice"
+[VAR] test_struct_operations | File: test.c | Line: 100 | student3.score = 103.000000
+[EXIT] Function: test_struct_operations | File: test.c | Line: 102
+[Duration]: Function: test_struct_operations | 64 (μs) 
+[ENTER] Function: test_nested_structs | File: test.c | Line: 107
+[ENTER] Function: create_rectangle | File: test.c | Line: 229
+[VAR] create_rectangle | File: test.c | Line: 230 | width = 10
+[VAR] create_rectangle | File: test.c | Line: 231 | height = 5
+[VAR] create_rectangle | File: test.c | Line: 239 | rect.width = 10
+[VAR] create_rectangle | File: test.c | Line: 240 | rect.height = 5
+[VAR] create_rectangle | File: test.c | Line: 241 | rect.area = 50.000000
+[VAR] create_rectangle | File: test.c | Line: 242 | rect.perimeter = 30.000000
+[EXIT] Function: create_rectangle | File: test.c | Line: 244
+[Duration]: Function: create_rectangle | 211 (μs) 
+[ENTER] Function: create_rectangle | File: test.c | Line: 229
+[VAR] create_rectangle | File: test.c | Line: 230 | width = 7
+[VAR] create_rectangle | File: test.c | Line: 231 | height = 7
+[VAR] create_rectangle | File: test.c | Line: 239 | rect.width = 7
+[VAR] create_rectangle | File: test.c | Line: 240 | rect.height = 7
+[VAR] create_rectangle | File: test.c | Line: 241 | rect.area = 49.000000
+[VAR] create_rectangle | File: test.c | Line: 242 | rect.perimeter = 28.000000
+[EXIT] Function: create_rectangle | File: test.c | Line: 244
+[Duration]: Function: create_rectangle | 2 (μs) 
+[VAR] test_nested_structs | File: test.c | Line: 114 | rect1.width = 10
+[VAR] test_nested_structs | File: test.c | Line: 115 | rect1.height = 5
+[VAR] test_nested_structs | File: test.c | Line: 116 | rect1.area = 50.000000
+[VAR] test_nested_structs | File: test.c | Line: 117 | rect1.perimeter = 30.000000
+[VAR] test_nested_structs | File: test.c | Line: 119 | rect2.width = 7
+[VAR] test_nested_structs | File: test.c | Line: 120 | rect2.height = 7
+[VAR] test_nested_structs | File: test.c | Line: 121 | rect2.area = 49.000000
+[VAR] test_nested_structs | File: test.c | Line: 128 | rect1.width = 15
+[VAR] test_nested_structs | File: test.c | Line: 129 | rect1.area = 75.000000
+[VAR] test_nested_structs | File: test.c | Line: 130 | rect1.perimeter = 40.000000
+[ENTER] Function: modify_rectangle | File: test.c | Line: 270
+[VAR] modify_rectangle | File: test.c | Line: 273 | rect->width = 7
+[VAR] modify_rectangle | File: test.c | Line: 274 | rect->height = 7
+[VAR] modify_rectangle | File: test.c | Line: 275 | rect->area = 49.000000
+[VAR] modify_rectangle | File: test.c | Line: 283 | rect->width = 9
+[VAR] modify_rectangle | File: test.c | Line: 284 | rect->height = 8
+[VAR] modify_rectangle | File: test.c | Line: 285 | rect->area = 72.000000
+[VAR] modify_rectangle | File: test.c | Line: 286 | rect->perimeter = 34.000000
+[EXIT] Function: modify_rectangle | File: test.c | Line: 289
+[Duration]: Function: modify_rectangle | 2 (μs) 
+[VAR] test_nested_structs | File: test.c | Line: 134 | rect2.width = 9
+[VAR] test_nested_structs | File: test.c | Line: 135 | rect2.area = 72.000000
+[EXIT] Function: test_nested_structs | File: test.c | Line: 137
+[Duration]: Function: test_nested_structs | 219 (μs) 
+[ENTER] Function: test_struct_arrays | File: test.c | Line: 142
+[ENTER] Function: create_student | File: test.c | Line: 204
+[VAR] create_student | File: test.c | Line: 205 | id = 1
+[VAR] create_student | File: test.c | Line: 206 | name = "Charlie"
+[VAR] create_student | File: test.c | Line: 207 | score = 85.000000
+*****************break point here***************
+[VAR] create_student | File: test.c | Line: 218 | s2 = (generic pointer: 0x7ffcb59f69d0)
+[VAR] create_student | File: test.c | Line: 219 | student.id = 1
+[VAR] create_student | File: test.c | Line: 220 | student.name = "Charlie"
+[VAR] create_student | File: test.c | Line: 221 | student.score = 85.000000
+[EXIT] Function: create_student | File: test.c | Line: 223
+[Duration]: Function: create_student | 2 (μs) 
+[ENTER] Function: create_student | File: test.c | Line: 204
+[VAR] create_student | File: test.c | Line: 205 | id = 2
+[VAR] create_student | File: test.c | Line: 206 | name = "Diana"
+[VAR] create_student | File: test.c | Line: 207 | score = 92.500000
+*****************break point here***************
+[VAR] create_student | File: test.c | Line: 218 | s2 = (generic pointer: 0x7ffcb59f69d0)
+[VAR] create_student | File: test.c | Line: 219 | student.id = 2
+[VAR] create_student | File: test.c | Line: 220 | student.name = "Diana"
+[VAR] create_student | File: test.c | Line: 221 | student.score = 92.500000
+[EXIT] Function: create_student | File: test.c | Line: 223
+[Duration]: Function: create_student | 1 (μs) 
+[ENTER] Function: create_student | File: test.c | Line: 204
+[VAR] create_student | File: test.c | Line: 205 | id = 3
+[VAR] create_student | File: test.c | Line: 206 | name = "Eve"
+[VAR] create_student | File: test.c | Line: 207 | score = 78.000000
+*****************break point here***************
+[VAR] create_student | File: test.c | Line: 218 | s2 = (generic pointer: 0x7ffcb59f69d0)
+[VAR] create_student | File: test.c | Line: 219 | student.id = 3
+[VAR] create_student | File: test.c | Line: 220 | student.name = "Eve"
+[VAR] create_student | File: test.c | Line: 221 | student.score = 78.000000
+[EXIT] Function: create_student | File: test.c | Line: 223
+[Duration]: Function: create_student | 134 (μs) 
+[VAR] test_struct_arrays | File: test.c | Line: 152 | students[0].id = 1
+[VAR] test_struct_arrays | File: test.c | Line: 153 | students[0].name = "Charlie"
+[VAR] test_struct_arrays | File: test.c | Line: 154 | students[0].score = 85.000000
+[VAR] test_struct_arrays | File: test.c | Line: 156 | students[1].id = 2
+[VAR] test_struct_arrays | File: test.c | Line: 157 | students[1].name = "Diana"
+[VAR] test_struct_arrays | File: test.c | Line: 158 | students[1].score = 92.500000
+[VAR] test_struct_arrays | File: test.c | Line: 160 | students[2].id = 3
+[VAR] test_struct_arrays | File: test.c | Line: 161 | students[2].name = "Eve"
+[VAR] test_struct_arrays | File: test.c | Line: 162 | students[2].score = 78.000000
+[VAR] test_struct_arrays | File: test.c | Line: 169 | students[0].score = 88.000000
+[VAR] test_struct_arrays | File: test.c | Line: 170 | students[1].score = 95.000000
+[VAR] test_struct_arrays | File: test.c | Line: 171 | students[2].name = "Eva"
+[VAR] test_struct_arrays | File: test.c | Line: 178 | total_score = 183.000000
+[VAR] test_struct_arrays | File: test.c | Line: 183 | total_score = 261.000000
+[VAR] test_struct_arrays | File: test.c | Line: 184 | average_score = 87.000000
+[ENTER] Function: create_student | File: test.c | Line: 204
+[VAR] create_student | File: test.c | Line: 205 | id = 4
+[VAR] create_student | File: test.c | Line: 206 | name = "Frank"
+[VAR] create_student | File: test.c | Line: 207 | score = 88.500000
+*****************break point here***************
+[VAR] create_student | File: test.c | Line: 218 | s2 = (generic pointer: 0x7ffcb59f69d0)
+[VAR] create_student | File: test.c | Line: 219 | student.id = 4
+[VAR] create_student | File: test.c | Line: 220 | student.name = "Frank"
+[VAR] create_student | File: test.c | Line: 221 | student.score = 88.500000
+[EXIT] Function: create_student | File: test.c | Line: 223
+[Duration]: Function: create_student | 1 (μs) 
+[ENTER] Function: create_student | File: test.c | Line: 204
+[VAR] create_student | File: test.c | Line: 205 | id = 5
+[VAR] create_student | File: test.c | Line: 206 | name = "Grace"
+[VAR] create_student | File: test.c | Line: 207 | score = 91.000000
+*****************break point here***************
+[VAR] create_student | File: test.c | Line: 218 | s2 = (generic pointer: 0x7ffcb59f69d0)
+[VAR] create_student | File: test.c | Line: 219 | student.id = 5
+[VAR] create_student | File: test.c | Line: 220 | student.name = "Grace"
+[VAR] create_student | File: test.c | Line: 221 | student.score = 91.000000
+[EXIT] Function: create_student | File: test.c | Line: 223
+[Duration]: Function: create_student | 1 (μs) 
+[VAR] test_struct_arrays | File: test.c | Line: 192 | dynamic_students[0].id = 4
+[VAR] test_struct_arrays | File: test.c | Line: 193 | dynamic_students[0].name = "Frank"
+[VAR] test_struct_arrays | File: test.c | Line: 194 | dynamic_students[1].score = 91.000000
+[EXIT] Function: test_struct_arrays | File: test.c | Line: 199
+[Duration]: Function: test_struct_arrays | 148 (μs) 
+=== 结构体测试完成 ===
+[EXIT] Function: main | File: test.c | Line: 55
+[Duration]: Function: main | 437 (μs) 
